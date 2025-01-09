@@ -7,45 +7,70 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/87e0dd3242.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
-    </head>
+  </head>
 
   <body>
     <header>
-      <h1 class="headline"> Fairy Forest </h1>
-      <% if user_signed_in? %>
-      <li>
-        <%= link_to "ホーム", top_path %>
-      </li>
-      <li>
-        <%= link_to "アバウト", about_path %>
-      </li>
-      <li>
-        <%= link_to "マイページ", about_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "ホーム", top_path %>
-      </li>
-      <li>
-        <%= link_to "アバウト", about_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Fairy Forest</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to top_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-home"></i> ホーム
+                  <% end %>
+                </li>
+                <li>
+                  <%=  link_to about_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-users"></i> アバウト
+                  <% end %>
+                </li>
+                <li>
+                  <%=  link_to about_path ,class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open"></i> マイページ
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt"></i> ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to root_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-home"></i> ホーム
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to about_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-link"></i> About
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-user-plus"></i> 新規登録
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-in-alt"></i> ログイン
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </header>
     <main>
       <%= yield %>
     </main>

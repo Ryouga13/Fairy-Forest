@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ 
+ .top-background {
+  background-image: url("background.jpg"); /* アセットパイプラインを利用 */
+  background-size: cover; /* 背景を全体に拡大・縮小 */
+  background-repeat: no-repeat; /* 繰り返しを防ぐ */
+  background-position: center; /* 画像を中央に配置 */
+  height: 100vh; /* ビューポートの高さの50% */
+  width: 100%; /* 全幅 */
+  display: flex; /* Flexboxで中央揃え可能に */
+  align-items: center; /* 縦方向に中央揃え */
+  justify-content: center; /* 横方向に中央揃え */
+  color: white; /* 文字色を白に設定 */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* 文字に影を追加 */
+}
