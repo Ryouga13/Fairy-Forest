@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   get 'top' => 'homes#top', as: 'top'
   get 'about' => 'homes#about', as: 'about'
   
-  resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  resources :posts do
+    collection do
+      get 'search' => 'posts#search'
+    end
+  end
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     collection do
-      get 'search' => 'users#search', as: 'search'
-      get 'mypage' => 'users#mypage', as: 'mypage'
+      get 'search' => 'users#search'
+      get 'mypage' => 'users#mypage'
     end
   end
 

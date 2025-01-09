@@ -6,9 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/87e0dd3242.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  
+    </head>
 
   <body>
     <header>
@@ -19,6 +21,9 @@
       </li>
       <li>
         <%= link_to "アバウト", about_path %>
+      </li>
+      <li>
+        <%= link_to "マイページ", about_path %>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
