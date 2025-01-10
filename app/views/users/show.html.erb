@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h1>ユーザー詳細</h1>
+
+<h2>名前</h2>
+<p><%= @user.name %></p>
+
+<% if @user == current_user %>
+  <%= link_to "編集", edit_user_path(@user.id), class: "" %></td>
+<% else %>
+<% end %>

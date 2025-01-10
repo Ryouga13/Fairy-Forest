@@ -24,18 +24,19 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li>
-                  <%= link_to top_path,class: 'nav-link text-light' do %>
-                    <i class="fas fa-home"></i> ホーム
-                  <% end %>
-                </li>
-                <li>
-                  <%=  link_to about_path,class: 'nav-link text-light' do %>
-                    <i class="fas fa-users"></i> アバウト
-                  <% end %>
-                </li>
-                <li>
-                  <%=  link_to about_path ,class: 'nav-link text-light' do %>
+                  <%=  link_to mypage_users_path ,class: 'nav-link text-light' do %>
                     <i class="fas fa-book-open"></i> マイページ
+                  <% end %>
+                </li>
+                <li>
+                <li>
+                  <%=  link_to users_path ,class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open"></i> ユーザー一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%=  link_to posts_path,class: 'nav-link text-light' do %>
+                    <i class="fas fa-users"></i> 投稿一覧
                   <% end %>
                 </li>
                 <li>
@@ -72,6 +73,9 @@
     </header>
 
     <main>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

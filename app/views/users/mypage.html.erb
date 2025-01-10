@@ -1,2 +1,8 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
+
+<h1>マイページ</h1>
+
+<%= link_to "登録内容変更", edit_user_path(@user.id) %>
+<h4>名前</h4>
+<%= @user.name %>
+<h4>メールアドレス</h4>
+<%= @user.email %>

@@ -1,5 +1,4 @@
-
-<h1>新規投稿</h1>
+<h1>投稿編集</h1>
 
 <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
@@ -10,10 +9,10 @@
   </ul>
 <% end %>
 
-<%= form_with model: @post, local: true, mothod: :post do |f| %>
+<%= form_with model: @post, local: true, mothod: :patch do |f| %>
   <h4>タイトル</h4>
   <%= f.text_field:title, placeholder: "タイトル", class: "" %>
   <h4>本文</h4>
   <%= f.text_area:body, placeholder: "本文", class: "" %>
-  <%= f.submit "作成", class: ""%>
+  <%= f.submit "更新", class: ""%>
 <% end %>
