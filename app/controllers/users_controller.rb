@@ -26,6 +26,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def withdrawal
+    @user = current_user
+  end
+
+  def destroy_account
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to new_user_session_path
+  end
+
 
   private
   def user_params

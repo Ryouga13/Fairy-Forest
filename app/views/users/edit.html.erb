@@ -10,10 +10,11 @@
   </ul>
 <% end %>
 
-<%= form_with model: @user, local: true, mothod: :patch do |f| %>
+<%= form_with model: @user, local: true, method: :patch do |f| %>
   <h4>名前</h4>
-  <%= f.text_field:name, placeholder: "名前", class: "" %>
+  <%= f.text_field :name, placeholder: "名前", class: "" %>
   <h4>メールアドレス</h4>
-  <%= f.text_area:email, placeholder: "メールアドレス", class: "" %>
+  <%= f.text_area :email, placeholder: "メールアドレス", class: "" %>
   <%= f.submit "更新", class: ""%>
 <% end %>
+<%= link_to "退会ページへ", withdrawal_user_path(current_user) %>

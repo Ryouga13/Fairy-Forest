@@ -12,10 +12,14 @@ Rails.application.routes.draw do
       get 'search' => 'posts#search'
     end
   end
-  resources :users, only: [:index, :show, :edit, :update, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update] do
     collection do
       get 'search' => 'users#search'
       get 'mypage' => 'users#mypage'
+    end
+    member do
+      get 'withdrawal' => 'users#withdrawal'
+      patch 'withdrawal' => 'users#withdrawal'
     end
   end
 
