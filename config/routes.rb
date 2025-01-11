@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get 'mypage' => 'users#mypage'
     end
     member do
-      get 'withdrawal' => 'users#withdrawal'
+      get 'check' => 'users#check'
       patch 'withdrawal' => 'users#withdrawal'
     end
   end

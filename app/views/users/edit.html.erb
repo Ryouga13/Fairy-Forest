@@ -17,4 +17,4 @@
   <%= f.text_area :email, placeholder: "メールアドレス", class: "" %>
   <%= f.submit "更新", class: ""%>
 <% end %>
-<%= link_to "退会ページへ", withdrawal_user_path(current_user) %>
+<%= link_to "退会ページへ", check_user_path(current_user) %>

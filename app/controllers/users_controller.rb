@@ -26,11 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def withdrawal
+  def chack
     @user = current_user
   end
 
-  def destroy_account
+  def withdrawal
     @user = User.find(current_user.id)
     @user.update(is_deleted: true)
     reset_session
