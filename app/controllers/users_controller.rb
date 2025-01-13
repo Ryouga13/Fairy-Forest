@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def chack
+  def check
     @user = current_user
   end
 
