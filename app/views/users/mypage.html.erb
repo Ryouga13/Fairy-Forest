@@ -6,3 +6,6 @@
 <%= @user.name %>
 <h4>メールアドレス</h4>
 <%= @user.email %>
+
+
+<%= link_to "投稿一覧", posts_path(current_user) %>

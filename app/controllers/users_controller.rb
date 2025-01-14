@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def mypage
     @user = current_user
   end
@@ -13,6 +14,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to mypage_users_path
+    end
   end
 
   def update
@@ -35,7 +39,7 @@ class UsersController < ApplicationController
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to new_user_session_path
+    redirect_to new_user_registration_path
   end
 
 
