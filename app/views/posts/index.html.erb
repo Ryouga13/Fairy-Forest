@@ -6,4 +6,6 @@
   <p>タイトル</p>
   <%= link_to post.title, post_path(post.id) %>
   <%= post.body %>
+  <p>コメント数</p>
+  <%= post.comments.count %>
 <% end %>

@@ -6,8 +6,14 @@
 <h2>本文</h2>
 <p><%= @post.body %></p>
 
+<h4>コメント数</h4>
+<p><%= @post.comments.count %></p>
+
 <% if @post.user == current_user %>
   <%= link_to "編集", edit_post_path(@post.id), class: "" %></td>
   <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: ""%>
-<% else %>
 <% end %>
+
+
+<%= render "comments/index", post: @post %>
+<%= render "comments/form", post: @post, comment: @comment %>

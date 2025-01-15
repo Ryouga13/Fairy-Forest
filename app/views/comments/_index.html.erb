@@ -1,0 +1,11 @@
+
+<% post.comments.each do |comment| %>
+  <%= link_to user_path(comment.user) do %>
+    <%= comment.user.name %>
+  <% end %>
+  <%= comment.comment %>
+
+  <% if comment.user == current_user %>
+    <%= link_to "Destroy", post_comment_path(post, comment), method: :delete, class: "" %>
+  <% end %>
+<% end %>
