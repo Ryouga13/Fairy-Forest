@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get '/' => 'homes#top'
   get 'top' => 'homes#top', as: 'top'
   get 'about' => 'homes#about', as: 'about'
+  get 'search' => 'searches#search'
   
   resources :posts do
     collection do
