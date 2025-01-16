@@ -8,4 +8,5 @@
   <%= post.body %>
   <p>コメント数</p>
   <%= post.comments.count %>
+  <td><%= render "favorites/btn", post: post %></td>
 <% end %>
