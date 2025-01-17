@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+
   root to: 'homes#top'
   #get '/' => 'homes#top'
   get 'top' => 'homes#top', as: 'top'
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
       get 'search' => 'posts#search'
     end
   end
+
   resources :users, only: [:index, :show, :edit, :update] do
     collection do
       get 'search' => 'users#search'
