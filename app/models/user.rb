@@ -15,4 +15,16 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  guest_email = "guest@dmm.com"
+  def self.guest
+    find_or_create_by!(email: guest_email) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
+  def guest_user?
+    email == guest_email
+  end
+
 end
