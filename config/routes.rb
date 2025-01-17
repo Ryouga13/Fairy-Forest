@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   #get '/' => 'homes#top'
   get 'top' => 'homes#top', as: 'top'
   get 'about' => 'homes#about', as: 'about'
+  get 'account' => 'homes#account', as: 'account'
   get 'search' => 'searches#search'
   
   resources :posts do
