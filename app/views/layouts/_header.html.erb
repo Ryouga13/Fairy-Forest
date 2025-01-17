@@ -1,0 +1,23 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">Fairy Forest</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+          <!-- 管理者用ナビゲーション -->
+          <%= render 'layouts/admin_header' %>
+        <% elsif user_signed_in? %>
+          <!-- 通常ユーザー用ナビゲーション -->
+          <%= render 'layouts/user_header' %>
+        <% else %>
+          <!-- 未ログインユーザー用ナビゲーション -->
+          <%= render 'layouts/guest_header' %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
