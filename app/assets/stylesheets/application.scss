@@ -15,11 +15,22 @@
  */
 
  
+
+ .wrapper {
+  width: 100%;
+ }
+
+ .container {
+  margin: 0 auto;
+ }
+
+
  .flash-message {
   border-radius: 5px;
   padding: 16px 24px;
   margin: 16px 0px;
   width: 80%;
+
 }
  
 .flash-message.notice {
@@ -35,7 +46,7 @@
 }
 
  .top-background {
-  background-image: image-url("background.jpg"); /* アセットパイプラインを利用 */
+  background-image: image-url("background.jpg");
   background-size: cover; /* 背景を全体に拡大・縮小 */
   background-repeat: no-repeat; /* 繰り返しを防ぐ */
   background-position: center; /* 画像を中央に配置 */
