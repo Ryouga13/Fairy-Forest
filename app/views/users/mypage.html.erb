@@ -1,7 +1,16 @@
 
 <h1>マイページ</h1>
 
+<% unless @user.guest_user? %>
 <%= link_to "登録内容変更", edit_user_path(@user.id) %>
+<% end %>
+
+<% if @user.profile_image.attached? %>
+  <%= image_tag @user.profile_image, size: "100x100" %>
+<% else %>
+  <%= image_tag 'no_image', size: "100x100" %>
+<% end %>
+
 <h4>名前</h4>
 <%= @user.name %>
 <h4>メールアドレス</h4>
