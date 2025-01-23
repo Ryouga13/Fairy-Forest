@@ -1,0 +1,29 @@
+
+<%= link_to "新規投稿", new_post_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>コメント数</th>
+      <th>いいね数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.reverse.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, post_path(post.id) %></td>
+        
+        <td><%= post.body %></td>
+
+        <td><%= post.comments.count %></td>
+        
+        <td><%= render "favorites/btn", post: post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+

@@ -26,6 +26,20 @@ class User::SessionsController < Devise::SessionsController
   # end
 
 
+  def after_sign_in_path_for(resource)
+    mypage_users_path
+  end
+
+  def after_sign_out_path_for(resource)
+    top_path
+  end
+
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: "guestuserでログインしました。"
+  end
+
   protected
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
   def reject_user
