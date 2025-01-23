@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -15,16 +16,16 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
-  guest_email = "guest@dmm.com"
+  GUEST_EMAIL = "guest@dmm.com"
   def self.guest
-    find_or_create_by!(email: guest_email) do |user|
+    find_or_create_by!(email: GUEST_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
   end
 
   def guest_user?
-    email == guest_email
+    email == GUEST_EMAIL
   end
 
 end

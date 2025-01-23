@@ -4,7 +4,7 @@
 <h2>名前</h2>
 <p><%= @user.name %></p>
 
-<% unless user.guest_user? %>
+<% unless @user.guest_user? %>
   <% if @user == current_user %>
     <%= link_to "編集", edit_user_path(@user.id), class: "" %></td>
   <% else %>
