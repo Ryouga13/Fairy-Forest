@@ -1,21 +1,26 @@
 
-<h1>新規投稿</h1>
-
-<% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @post, local: true, mothod: :post do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field:title, placeholder: "タイトル", class: "" %>
-  <h4>本文</h4>
-  <%= f.text_area:body, placeholder: "本文", class: "" %>
-  <h4>タグ</h4>
-  <%= f.text_field:category, placeholder: "タグ", class: "" %>
-  <%= f.submit "作成", class: ""%>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-5 mx-auto">
+      <h1>新規投稿</h1>
+      <%= render 'layouts/errors', obj: @post %>
+      <%= form_with model: @post, local: true, method: :post do |f| %>
+        <div class="form-group">
+          <h4>タイトル</h4>
+          <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <h4>本文</h4>
+          <%= f.text_area :body, placeholder: "本文", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <h4>タグ</h4>
+          <%= f.text_field :category, placeholder: "タグ", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "作成", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

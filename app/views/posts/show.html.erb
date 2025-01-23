@@ -1,20 +1,36 @@
-<h1>投稿詳細</h1>
+<div class='container'>
+  <div class='row'>
+    <div class="col-5 mx-auto">
+      <h1>投稿詳細</h1>
 
-<h2>タイトル</h2>
-<p><%= @post.title %></p>
+      <h2>タイトル</h2>
+      <p><%= @post.title %></p>
 
-<h2>本文</h2>
-<p><%= @post.body %></p>
+      <h2>本文</h2>
+      <p><%= @post.body %></p>
 
-<h4>コメント数</h4>
-<p><%= @post.comments.count %></p>
+      <h4>コメント数</h4>
+      <p><%= @post.comments.count %></p>
 
-<% if @post.user == current_user %>
-  <%= link_to "編集", edit_post_path(@post.id), class: "" %></td>
-  <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: ""%>
-<% end %>
+      <% if @post.user == current_user %>
+        <div class="d-flex justify-content-between">
+          <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-info" %>
+          <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+        </div>
+      <% end %>
 
+      <div class="mt-3">
+        <%= render "favorites/btn", post: @post %>
+      </div>
+    </div>
+  </div>
 
-<%= render "comments/index", post: @post %>
-<%= render "comments/form", post: @post, comment: @comment %>
-<td><%= render "favorites/btn", post: @post %></td>
+  <div class="row mt-4">
+    <div class="comment-section">
+      <%= render "comments/index", post: @post %>
+    </div>
+    <div class="comment-section mt-3">
+      <%= render "comments/form", post: @post, comment: @comment %>
+    </div>
+  </div>
+</div>

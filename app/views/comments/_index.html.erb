@@ -1,11 +1,20 @@
+<div class="comments">
+  <% post.comments.each do |comment| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to user_path(comment.user), class: "text-primary" do %>
+            <%= comment.user.name %>
+          <% end %>
+        </h5>
+        <p class="card-text"><%= comment.comment %></p>
 
-<% post.comments.each do |comment| %>
-  <%= link_to user_path(comment.user) do %>
-    <%= comment.user.name %>
+        <% if comment.user == current_user %>
+          <div class="text-end">
+            <%= link_to "削除", post_comment_path(post, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-  <%= comment.comment %>
-
-  <% if comment.user == current_user %>
-    <%= link_to "Destroy", post_comment_path(post, comment), method: :delete, class: "" %>
-  <% end %>
-<% end %>
+</div>
