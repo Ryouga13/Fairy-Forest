@@ -2,29 +2,30 @@
 <div class='container'>
   <div class='row'>
     <div class="col-5 mx-auto">
-    <h2 class="mb-4">ユーザー情報編集</h2>
-    <%= render 'layouts/errors', obj: @user %>
-    <%= form_with model:@user, local:true, method: :patch do |f| %>
-      <div class="form-group">
-        <%= f.label :プロフィール画像 %>
-        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :名前 %>
-        <%= f.text_field :name, placeholder: "名前", class: "form-control name" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :メールアドレス %>
-        <%= f.text_field :email, placeholder: "xxx@gmail.com", class: "form-control email" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :自己紹介文 %>
-        <%= f.text_area :introduction, rows: '5', placeholder: "よろしくお願いします。", class: "form-control introduction" %>
-      </div>
-      <div class="form-group d-flex justify-content-between">
-        <%= f.submit "更新", class: 'btn btn-info' %>
-        <%= link_to "退会ページへ", check_user_path(current_user), class: 'btn btn-danger' %>
-      </div>
-    <% end %>
+      <h2 class="mb-4">ユーザー情報編集</h2>
+      <%= render 'layouts/errors', obj: @user %>
+      <%= form_with model:@user, local:true, method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :プロフィール画像 %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :名前 %>
+          <%= f.text_field :name, placeholder: "名前", class: "form-control name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.text_field :email, placeholder: "xxx@gmail.com", class: "form-control email" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :自己紹介文 %>
+          <%= f.text_area :introduction, rows: '5', placeholder: "よろしくお願いします。", class: "form-control introduction" %>
+        </div>
+        <div class="form-group d-flex justify-content-between">
+          <%= f.submit "更新", class: 'btn btn-info' %>
+          <%= link_to "退会ページへ", check_user_path(current_user), class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,8 +1,22 @@
 
-<h1>ユーザー一覧</h1>
+<div class='container'>
+  <div class='row'>
+    <div class="col-5 mx-auto">
+      <h2 class="mb-4">ユーザー一覧</h2>
 
-<% @user.each do |user| %>
-  <h4>名前</h4>
-  <%=link_to user.name, user_path(user.id) %>
-<% end %>
+      <div class="list-group">
+        <% if @users.present? %>
+          <% @users.each do |user| %>
+            <div class="list-group-item">
+              <h4 class="mb-1">名前</h4>
+              <%= link_to user.name, user_path(user), class: "text-primary" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-muted">現在、ユーザーが存在しません。</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 

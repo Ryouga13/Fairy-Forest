@@ -1,32 +1,27 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-5 mx-auto my-5">
-      <h2 class="mb-4">ログイン</h2>
+    <div class="col-5 mx-auto">
+      <h2 class="text-center my-4">ログイン</h2>
 
-      <%= form_with model: @user, url: user_session_path, local: true, class: "login-form" do |f| %>
-        <!-- エラーメッセージ -->
+      <%= form_with model: @user, url: user_session_path, local: true, class: "p-4" do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <!-- メールアドレス -->
-        <div class="form-group">
+        <div class="mb-3">
           <%= f.label :email, "メールアドレス", class: "form-label" %>
           <%= f.email_field :email, autofocus: true,placeholder: "xxx@gmail.com", autocomplete: "email", class: "form-control" %>
         </div>
-
-        <!-- パスワード -->
-        <div class="form-group">
+        <div class="mb-3">
           <%= f.label :password, "パスワード", class: "form-label" %>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
-
-        <!-- ログインボタン -->
-        <div class="form-group">
+        <div class="mb-3">
           <%= f.submit "ログイン", class: "btn btn btn-info btn-block" %>
         </div>
       <% end %>
 
-      <!-- Deviseのリンク（パスワード忘れなど） -->
-      <%= render "devise/shared/links" %>
+      <div class="text-center">
+        <%= link_to "アカウントを作成する", new_user_registration_path, class: "text-info" %>
+      </div>
     </div>
   </div>
 </div>
