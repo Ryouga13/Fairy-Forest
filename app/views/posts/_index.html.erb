@@ -13,9 +13,11 @@
   <tbody>
     <% posts.reverse.each do |post| %>
       <tr>
-        <td><%= link_to post.title, post_path(post.id) %></td>
+        <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
         
-        <td><%= post.body %></td>
+        <td>
+          <%= truncate(post.body, length: 20) %>
+        </td>
 
         <td><%= post.comments.count %></td>
         
