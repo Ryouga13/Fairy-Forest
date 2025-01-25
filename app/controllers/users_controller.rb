@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
 
@@ -9,11 +8,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def edit
