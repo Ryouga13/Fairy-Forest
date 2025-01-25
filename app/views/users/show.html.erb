@@ -1,12 +1,13 @@
 
-<h1>ユーザー詳細</h1>
-
-<h2>名前</h2>
-<p><%= @user.name %></p>
-
-<% unless @user.guest_user? %>
-  <% if @user == current_user %>
-    <%= link_to "編集", edit_user_path(@user.id), class: "" %></td>
-  <% else %>
-  <% end %>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-3'>
+      <h2 class="mb-4">ユーザー詳細</h2>
+      <%= render 'users/mypage', user: @user %>
+    </div>
+    <div class='col-8 offset-1'>
+      <h2>投稿一覧</h2>
+      <%= render 'posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

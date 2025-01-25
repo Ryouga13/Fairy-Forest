@@ -24,13 +24,11 @@
   margin: 0 auto;
  }
 
-
  .flash-message {
   border-radius: 5px;
   padding: 16px 24px;
-  margin: 16px 0px;
+  margin: 16px auto;
   width: 80%;
-
 }
  
 .flash-message.notice {
@@ -81,6 +79,16 @@ thead th {
 tbody td {
   border: 1px solid #ddd;
   padding: 10px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.title-link {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .comment-section {

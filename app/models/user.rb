@@ -28,4 +28,5 @@ class User < ApplicationRecord
     email == GUEST_EMAIL
   end
 
+
 end

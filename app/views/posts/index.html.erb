@@ -1,12 +1,36 @@
-<h1>投稿一覧</h1>
 
-<%= link_to "新規投稿", new_post_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-12'>
+      <h1>投稿一覧</h1>
 
-<% @posts.reverse.each do |post| %>
-  <p>タイトル</p>
-  <%= link_to post.title, post_path(post.id) %>
-  <%= post.body %>
-  <p>コメント数</p>
-  <%= post.comments.count %>
-  <td><%= render "favorites/btn", post: post %></td>
-<% end %>
+      <%= link_to "新規投稿", new_post_path %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th>内容</th>
+            <th>コメント数</th>
+            <th>いいね数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.reverse.each do |post| %>
+            <tr>
+              <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
+              
+              <td>
+                <%= truncate(post.body, length: 20) %>
+              </td>
+
+              <td><%= post.comments.count %></td>
+              
+              <td><%= render "favorites/btn", post: post %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

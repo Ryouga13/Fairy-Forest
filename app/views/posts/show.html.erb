@@ -1,14 +1,12 @@
 <div class='container'>
   <div class='row'>
     <div class="col-5 mx-auto">
-      <h1>投稿詳細</h1>
+      <h2 class="mb-4">投稿詳細</h2>
 
       <h2>タイトル</h2>
       <p><%= @post.title %></p>
-
       <h2>本文</h2>
       <p><%= @post.body %></p>
-
       <h4>コメント数</h4>
       <p><%= @post.comments.count %></p>
 
@@ -24,13 +22,12 @@
       </div>
     </div>
   </div>
-
-  <div class="row mt-4">
-    <div class="comment-section">
-      <%= render "comments/index", post: @post %>
-    </div>
-    <div class="comment-section mt-3">
-      <%= render "comments/form", post: @post, comment: @comment %>
-    </div>
+  
+  <div class="comment-section">
+    <%= render "comments/index", post: @post %>
   </div>
+  <div class="comment-section mt-3">
+    <%= render "comments/form", post: @post, comment: @comment %>
+  </div>
+  
 </div>
