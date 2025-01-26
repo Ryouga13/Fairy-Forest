@@ -7,6 +7,7 @@
       <table>
         <thead>
           <tr>
+            <th>投稿者</th>
             <th>タイトル</th>
             <th>内容</th>
             <th>コメント数</th>
@@ -16,6 +17,16 @@
         <tbody>
           <% @posts.reverse.each do |post| %>
             <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <% if post.user.profile_image.attached? %>
+                    <%= image_tag post.user.profile_image, size: "50x50" %>
+                  <% else %>
+                    <%= image_tag "no_image.jpg", size: "50x50", alt: "no_profile image" %>
+                  <% end %>
+                    <%= link_to post.user.name, admin_user_path(post.user), class: "user-link" %>
+                </div>
+              </td>
               <td><%= link_to truncate(post.title, length: 10), admin_post_path(post.id), class: "title-link" %></td>
               
               <td>

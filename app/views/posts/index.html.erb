@@ -25,7 +25,6 @@
                   <% else %>
                     <%= image_tag "no_image.jpg", size: "50x50", alt: "no_profile image" %>
                   <% end %>
-                  
                     <%= link_to post.user.name, user_path(post.user), class: "user-link" %>
                 </div>
               </td>
