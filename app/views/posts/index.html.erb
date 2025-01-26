@@ -2,13 +2,13 @@
 <div class='container'>
   <div class='row'>
     <div class='col-12'>
-      <h1>投稿一覧</h1>
-
+      <h2 class="mb-4">投稿一覧</h2>
       <%= link_to "新規投稿", new_post_path %>
 
       <table>
         <thead>
           <tr>
+            <th>投稿者</th>
             <th>タイトル</th>
             <th>内容</th>
             <th>コメント数</th>
@@ -18,6 +18,18 @@
         <tbody>
           <% @posts.reverse.each do |post| %>
             <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <% if post.user.profile_image.attached? %>
+                    <%= image_tag post.user.profile_image, size: "50x50" %>
+                  <% else %>
+                    <%= image_tag "no_image.jpg", size: "50x50", alt: "no_profile image" %>
+                  <% end %>
+                  
+                    <%= link_to post.user.name, user_path(post.user), class: "user-link" %>
+                </div>
+              </td>
+
               <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
               
               <td>
