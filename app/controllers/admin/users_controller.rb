@@ -1,8 +1,7 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit]
-
-
+class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_user, only: [:destroy]
+  
   def mypage
     @user = current_user
     @posts = @user.posts
@@ -47,6 +46,15 @@ class UsersController < ApplicationController
     redirect_to new_user_registration_path
   end
 
+  def destroy
+    if @user.is_deleted
+      @user.destroy # 物理削除を実行
+      redirect_to admin_users_path, notice: "#{@user.name}さんのデータを完全に削除しました。"
+    else
+      redirect_to admin_users_path, alert: "#{@user.name}さんは退会済みではないため、削除できません。"
+    end
+  end
+
 
   private
   def user_params
@@ -58,6 +66,11 @@ class UsersController < ApplicationController
     if @user.email == "guest@dmm.com"
       redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
-  end  
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:id]) # 該当するユーザーを探す。見つからなければnil
+  end
+
 
 end
