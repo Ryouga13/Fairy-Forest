@@ -47,6 +47,19 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_user_path
   end
 
+  # 論理削除(復活)
+  def reactivate
+    if @user && @user.is_deleted
+      @user.update(is_deleted: false)
+      redirect_to admin_users_path, notice: "#{@user.name}さんをアクティブに戻しました。"
+    elsif @user
+      redirect_to admin_users_path, alert: "#{@user.name}さんは既にアクティブな状態です。"
+    else
+      redirect_to admin_users_path, alert: "ユーザーが見つかりませんでした。"
+    end
+  end
+  
+
 # 物理削除
   def destroy
     if @user.is_deleted

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :users do
       member do
         patch 'withdrawal' => 'users#withdrawal'
+        patch 'reactivate' => 'users#reactivate'
       end
     end
   end
