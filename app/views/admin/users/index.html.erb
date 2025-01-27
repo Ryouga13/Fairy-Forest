@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-8 mx-auto">
+      <h2 class="mb-4">ユーザー管理</h2>
+
+      <div class="list-group">
+        <% if @users.present? %>
+          <% @users.each do |user| %>
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h4 class="mb-1">
+                  <%= link_to user.name, admin_user_path(user), class: "text-primary" %>
+                <p class="mb-0">
+                  <strong>ステータス:</strong>
+                  <% if user.is_deleted %>
+                    <span class="text-danger">退会済み</span>
+                  <% else %>
+                    <span class="text-success">アクティブ</span>
+                  <% end %>
+                </p>
+              </div>
+
+              <% if user.is_deleted %>
+                <!-- 削除ボタン（退会済みの場合のみ表示） -->
+                <%= button_to "物理削除", admin_user_path(user), method: :delete, data: { confirm: "本当にこのユーザーを完全に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-muted">現在、ユーザーが存在しません。</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

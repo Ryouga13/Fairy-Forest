@@ -3,7 +3,6 @@
   <div class='row'>
     <div class='col-12'>
       <h2 class="mb-4">投稿一覧</h2>
-      <%= link_to "新規投稿", new_post_path %>
 
       <table>
         <thead>
@@ -25,11 +24,10 @@
                   <% else %>
                     <%= image_tag "no_image.jpg", size: "50x50", alt: "no_profile image" %>
                   <% end %>
-                    <%= link_to post.user.name, user_path(post.user), class: "user-link" %>
+                    <%= link_to post.user.name, admin_user_path(post.user), class: "user-link" %>
                 </div>
               </td>
-
-              <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
+              <td><%= link_to truncate(post.title, length: 10), admin_post_path(post.id), class: "title-link" %></td>
               
               <td>
                 <%= truncate(post.body, length: 20) %>
@@ -37,7 +35,7 @@
 
               <td><%= post.comments.count %></td>
               
-              <td><%= render "favorites/btn", post: post %></td>
+              <td><%= render "admin/favorites/btn", post: post %></td>
             </tr>
           <% end %>
         </tbody>
