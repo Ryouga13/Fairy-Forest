@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  devise_for :user,skip: [:passwords], controllers: {
+    registrations: "user/registrations",
+    sessions: 'user/sessions'
+  }
   devise_scope :user do
-    post "users/guest_sign_in" => "users/sessions#guest_sign_in"
+    post "users/guest_sign_in" => "user/sessions#guest_sign_in"
   end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -37,7 +40,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'top' => 'homes#top'
     resources :posts
-    resources :users
+    resources :users do
+      member do
+        patch 'withdrawal' => 'users#withdrawal'
+      end
+    end
   end
 
 

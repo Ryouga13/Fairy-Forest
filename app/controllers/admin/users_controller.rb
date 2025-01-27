@@ -38,17 +38,19 @@ class Admin::UsersController < ApplicationController
     @user = current_user
   end
 
+# 論理削除
   def withdrawal
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to new_user_registration_path
+    redirect_to admin_user_path
   end
 
+# 物理削除
   def destroy
     if @user.is_deleted
-      @user.destroy # 物理削除を実行
+      @user.destroy
       redirect_to admin_users_path, notice: "#{@user.name}さんのデータを完全に削除しました。"
     else
       redirect_to admin_users_path, alert: "#{@user.name}さんは退会済みではないため、削除できません。"
