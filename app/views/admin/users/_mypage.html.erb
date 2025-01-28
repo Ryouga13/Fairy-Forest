@@ -18,7 +18,7 @@
 </table>
 
 <% if user.is_deleted %>
-  <%= link_to "再アクティブ化", reactivate_admin_user_path(user), method: :patch, data: { confirm: "#{user.name}さんをアクティブに戻しますか？" } %>
+  <%= link_to "再アクティブ化", reactivate_admin_user_path(user), method: :patch, class: "btn btn-success mx-2",data: { confirm: "#{user.name}さんをアクティブに戻しますか？" } %>
 <% else %>
-  <%= link_to "退会させる", withdrawal_admin_user_path(user), method: :patch, class: "btn btn-danger btn-lg mx-2", data: { confirm: "本当に退会させますか？" } %>
+  <%= link_to "退会させる", withdrawal_admin_user_path(user), method: :patch, class: "btn btn-danger mx-2", data: { confirm: "本当に退会させますか？" } %>
 <% end %>

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_user, only: [:destroy]
+  before_action :set_user
   
   def mypage
     @user = current_user
@@ -14,28 +14,6 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
-  end
-
-  def edit
-    @user = User.find(params[:id])
-    unless @user.id == current_user.id
-      redirect_to mypage_users_path
-    end
-  end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-    flash[:notice] = "編集に成功しました。"
-      redirect_to mypage_users_path
-    else
-      flash.now[:alert] = "編集に失敗しました。"
-      render :edit
-    end
-  end
-
-  def check
-    @user = current_user
   end
 
 # 論理削除
@@ -58,7 +36,6 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path, alert: "ユーザーが見つかりませんでした。"
     end
   end
-  
 
 # 物理削除
   def destroy
@@ -72,17 +49,6 @@ class Admin::UsersController < ApplicationController
 
 
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :introduction, :profile_image)
-  end
-
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.email == "guest@dmm.com"
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
-    end
-  end
-
   def set_user
     @user = User.find_by(id: params[:id]) # 該当するユーザーを探す。見つからなければnil
   end

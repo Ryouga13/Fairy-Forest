@@ -24,10 +24,10 @@
     </div>
   </div>
   
-  <div class="comment-section">
+  <div class="comment-section" id="comments-index">
     <%= render "comments/index", post: @post %>
   </div>
-  <div class="comment-section mt-3">
+  <div class="comment-section mt-3" id="comments-form">
     <%= render "comments/form", post: @post, comment: @comment %>
   </div>
   
