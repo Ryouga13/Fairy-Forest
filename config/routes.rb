@@ -39,10 +39,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top'
-    resources :posts
+    resources :posts do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :users do
       member do
         patch 'withdrawal' => 'users#withdrawal'
+        patch 'reactivate' => 'users#reactivate'
       end
     end
   end
