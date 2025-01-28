@@ -9,7 +9,18 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    if params[:word].present?
+      # 検索ワードが存在する場合は検索
+      @users = User.where("name LIKE ?", "%#{params[:word]}%")
+    else
+      @users = User.all
+    end
+  end
+
+  def search
+    @word = params[:word]
+    @users = User.where("name LIKE ?", "%#{@word}%")
+    render :index
   end
 
   def show

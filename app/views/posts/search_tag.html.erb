@@ -16,14 +16,9 @@
           </tr>
         </thead>
         <tbody>
-          <%= form_with url: posts_path, method: :get, local: true do %>
-            <div>
-              <%= label_tag :word, "検索ワード" %>
-              <%= params[:word] %>
-            </div>
-          <% end %>
+          
 
-          <% @posts.reverse.each do |post| %>
+          <% @tag.posts.reverse.each do |post| %>
             <tr>
               <td>
                 <div class="d-flex align-items-center">
