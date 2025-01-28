@@ -6,12 +6,14 @@ class CommentsController < ApplicationController
     @comment.post_id = @post.id
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to request.referer
+    redirect_to post_path(@post.id)
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @comment.destroy
+    redirect_to post_path(@post.id)
   end
 
 
