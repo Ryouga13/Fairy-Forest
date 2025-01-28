@@ -10,6 +10,8 @@
       <p><%= @post.body %></p>
       <h4>コメント数</h4>
       <p><%= @post.comments.count %></p>
+      <% @post_tags.each do |tag| %>
+      <%= link_to tag.name,search_tag_posts_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %><% end %>
 
       <% if @post.user == current_user %>
         <div class="d-flex justify-content-between">

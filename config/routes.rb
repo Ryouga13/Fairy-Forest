@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     collection do
       get 'search' => 'posts#search'
+      get 'search_tag' => 'posts#search_tag'
     end
   end
 
