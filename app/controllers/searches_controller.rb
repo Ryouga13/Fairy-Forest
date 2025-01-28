@@ -6,8 +6,10 @@ class SearchesController < ApplicationController
     @range = params[:range]
     if @range == "User"
       @users = User.looks(params[:word])
+      redirect_to search_users_path(word: @word, range: @range)
     else
-      @posts = Book.looks(params[:word])
+      @posts = Post.looks(params[:word])
+      redirect_to search_posts_path(word: @word, range: @range)
     end
   end
 
