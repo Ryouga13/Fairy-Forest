@@ -1,7 +1,9 @@
 
-<%= link_to "新規投稿", new_post_path %>
+<div class="d-flex justify-content-end mb-3">
+  <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
+</div>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>タイトル</th>
@@ -14,18 +16,10 @@
     <% posts.reverse.each do |post| %>
       <tr>
         <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
-        
-        <td>
-          <%= truncate(post.body, length: 20) %>
-        </td>
-
+        <td><%= truncate(post.body, length: 20) %></td>
         <td><%= post.comments.count %></td>
-        
         <td><%= render "favorites/btn", post: post %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
-
