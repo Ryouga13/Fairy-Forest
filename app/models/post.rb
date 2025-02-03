@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   
   validates :title, presence: true
   validates :body, presence: true
+  validates :star, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
 
 
   def favorited_by?(user)

@@ -1,13 +1,17 @@
 
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
-    <div class='col-3'>
-      <h2 class="mb-4">ユーザー詳細</h2>
+    <!-- 他のUserプロフィール部分 -->
+    <div class='col-md-3 col-12 mb-4'>
+      <h2>ユーザー詳細</h2>
       <%= render 'users/mypage', user: @user %>
     </div>
-    <div class='col-8 offset-1'>
+
+    <!-- 投稿一覧 -->
+    <div class='col-md-8 offset-md-1 col-12'>
       <h2>投稿一覧</h2>
       <%= render 'posts/index', posts: @posts %>
     </div>
   </div>
 </div>
+

@@ -1,5 +1,5 @@
 
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
     <div class="col-5 mx-auto">
       <h2 class="mb-4">投稿編集</h2>
@@ -18,6 +18,12 @@
           <h4>タグ</h4>
           <%= f.text_field :name,value: @tag_list, placeholder: "タグ (,で区切ると複数タグ登録できます)", class: "form-control", rows: 5 %>
         </div>
+        <!-- ★ 星評価 -->
+        <div class="form-group">
+          <h4>評価</h4>
+          <div id="post_raty"></div>
+          <%= f.hidden_field :star, id: "post_star" %>
+        </div>
 
         <div class="form-group">
           <%= f.submit "更新", class: "btn btn-primary" %>
@@ -26,3 +32,20 @@
     </div>
   </div>
 </div>
+
+
+<!-- ☆ Raty.js のスクリプト -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var elem = document.querySelector("#post_raty");
+    var opt = {
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      score: <%= @post.star || 0 %>,
+      click: function(score) {
+        document.querySelector("#post_star").value = score;
+      }
+    };
+    raty(elem, opt);
+  });
+</script>

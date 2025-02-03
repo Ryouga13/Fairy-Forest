@@ -1,9 +1,9 @@
 
 <div class="text-center">
   <% if user.profile_image.attached? %>
-    <%= image_tag user.profile_image, size: "150x150", class: "profile-image rounded-circle mb-3" %>
+    <%= image_tag user.profile_image, size: "150x150", class: "profile-image mb-3" %>
   <% else %>
-    <%= image_tag 'no_image.jpg', size: "150x150", class: "profile-image rounded-circle mb-3" %>
+    <%= image_tag 'no_image.jpg', size: "150x150", class: "profile-image mb-3" %>
   <% end %>
 </div>
 

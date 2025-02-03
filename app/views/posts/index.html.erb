@@ -1,54 +1,54 @@
 
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
     <div class='col-12'>
       <h2 class="mb-4">投稿一覧</h2>
-      <%= link_to "新規投稿", new_post_path %>
 
-      <table>
-        <thead>
-          <tr>
-            <th>投稿者</th>
-            <th>タイトル</th>
-            <th>内容</th>
-            <th>コメント数</th>
-            <th>いいね数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= form_with url: posts_path, method: :get, local: true do %>
-            <div>
-              <%= label_tag :word, "検索ワード" %>
-              <%= params[:word] %>
-            </div>
-          <% end %>
+      <div class="d-flex justify-content-end mb-3">
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
+      </div>
 
-          <% @posts.reverse.each do |post| %>
+      <!-- テーブルをレスポンシブ対応 -->
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
             <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <% if post.user.profile_image.attached? %>
-                    <%= image_tag post.user.profile_image, size: "50x50" %>
-                  <% else %>
-                    <%= image_tag "no_image.jpg", size: "50x50", alt: "no_profile image" %>
-                  <% end %>
-                    <%= link_to post.user.name, user_path(post.user), class: "user-link" %>
-                </div>
-              </td>
-
-              <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
-              
-              <td>
-                <%= truncate(post.body, length: 20) %>
-              </td>
-
-              <td><%= post.comments.count %></td>
-              
-              <td><%= render "favorites/btn", post: post %></td>
+              <th>投稿者</th>
+              <th>タイトル</th>
+              <th>内容</th>
+              <th>コメント数</th>
+              <th>いいね数</th>
+              <th>感情分析</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @posts.reverse.each do |post| %>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <% if post.user.profile_image.attached? %>
+                      <%= image_tag post.user.profile_image, class: "profile-image rounded-circle me-2" %>
+                    <% else %>
+                      <%= image_tag "no_image.jpg", class: "profile-image rounded-circle me-2" %>
+                    <% end %>
+                    <%= link_to post.user.name, user_path(post.user), class: "user-link" %>
+                  </div>
+                </td>
+
+                <td><%= link_to truncate(post.title, length: 10), post_path(post.id), class: "title-link" %></td>
+                
+                <td><%= truncate(post.body, length: 20) %></td>
+
+                <td><%= post.comments.count %></td>
+                
+                <td><%= render "favorites/btn", post: post %></td>
+
+                <td><span class="sentiment-score">本文の感情分析スコア<%= post.score %></span></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
