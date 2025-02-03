@@ -20,7 +20,6 @@ class Admin::UsersController < ApplicationController
   def withdrawal
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
-    reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to admin_user_path
   end
@@ -29,7 +28,7 @@ class Admin::UsersController < ApplicationController
   def reactivate
     if @user && @user.is_deleted
       @user.update(is_deleted: false)
-      redirect_to admin_users_path, notice: "#{@user.name}さんをアクティブに戻しました。"
+      redirect_to admin_user_path, notice: "#{@user.name}さんをアクティブに戻しました。"
     elsif @user
       redirect_to admin_users_path, alert: "#{@user.name}さんは既にアクティブな状態です。"
     else
