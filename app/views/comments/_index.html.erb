@@ -1,6 +1,7 @@
+
 <div class="comments">
   <% post.comments.each do |comment| %>
-    <div class="card mb-3">
+    <div class="card mb-3" id="comment-<%= comment.id %>">
       <div class="card-body">
         <h5 class="card-title">
           <%= link_to user_path(comment.user), class: "text-primary" do %>
@@ -11,7 +12,7 @@
 
         <% if comment.user == current_user %>
           <div class="text-end">
-            <%= link_to "削除", post_comment_path(post, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+            <%= link_to "削除", post_comment_path(post, comment), method: :delete, remote: true, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
           </div>
         <% end %>
       </div>

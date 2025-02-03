@@ -2,18 +2,28 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = Comment.new(comment_params)
-    @comment.post_id = @post.id
-    @comment.user_id = current_user.id
-    @comment.save
-    redirect_to post_path(@post.id)
+    @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_path(@post), notice: "コメントを追加しました。" }
+        format.js   # `create.js.erb` を実行
+      else
+        format.html { render 'posts/show' }
+        format.js   # エラー時も非同期で処理
+      end
+    end
   end
+  
 
   def destroy
     @comment = Comment.find(params[:id])
     @post = @comment.post
     @comment.destroy
-    redirect_to post_path(@post.id)
+    respond_to do |format|
+      format.html { redirect_to post_path(@post), notice: "コメントを削除しました。" }
+      format.js   # `destroy.js.erb` を実行
+    end
   end
 
 

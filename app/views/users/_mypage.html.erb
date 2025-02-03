@@ -1,24 +1,25 @@
 
-<table class='table'>
+<div class="text-center">
+  <% if user.profile_image.attached? %>
+    <%= image_tag user.profile_image, size: "150x150", class: "profile-image mb-3" %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: "150x150", class: "profile-image mb-3" %>
+  <% end %>
+</div>
+
+<table class='table table-bordered'>
   <tr>
-    <% if user.profile_image.attached? %>
-      <%= image_tag user.profile_image, size: "200x200", class: "profile-image" %>
-    <% else %>
-      <%= image_tag 'no_image.jpg', size: "200x200", class: "profile-image" %>
-    <% end %>
+    <th>名前</th>
+    <td><%= user.name %></td>
   </tr>
   <tr>
-	  <th>名前</th>
-	  <th><%= user.name %></th>
-  </tr>
-  <tr>
-	  <th>自己紹介</th>
-	  <th><%= user.introduction %></th>
+    <th>自己紹介</th>
+    <td><%= user.introduction %></td>
   </tr>
 </table>
 
 <% if user_signed_in? && !current_user.guest_user? && user == current_user %>
-  <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
-  <i class="fas fa-user-cog"></i>
+  <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center mt-3" do %>
+    <i class="fas fa-user-cog me-2"></i> プロフィール編集
   <% end %>
 <% end %>

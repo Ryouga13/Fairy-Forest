@@ -14,15 +14,6 @@
  *= require_self
  */
 
- 
-
- .wrapper {
-  width: 100%;
- }
-
- .container {
-  margin: 0 auto;
- }
 
  .flash-message {
   border-radius: 5px;
@@ -99,3 +90,15 @@ tbody td {
 }
 
 
+/* posts/index のみ 画像サイズ 50px */
+.posts-index .profile-image {
+  max-width: 50px;
+  height: auto;
+}
+
+/* それ以外のページでは 150px */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}

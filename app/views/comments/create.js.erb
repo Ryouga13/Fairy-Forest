@@ -1,0 +1,5 @@
+
+// コメント一覧を更新
+$("#comments-index").html("<%= j render 'comments/index', post: @post %>");
+// フォームをリセット
+$("#new_comment_form")[0].reset();

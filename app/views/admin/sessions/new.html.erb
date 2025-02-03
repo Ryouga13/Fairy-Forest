@@ -1,23 +1,28 @@
 
-<div class='container'>
-  <div class='row'>
-    <div class="col-5 mx-auto">
-      <h2 class="text-center my-4">管理者ログイン</h2>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "p-4" }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 col-10">
+      <div class="card shadow-sm p-4">
+        <h2 class="text-center my-3">管理者ログイン</h2>
+        
+        <%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="mb-3">
-          <%= f.label :email, "管理者アドレス", class: "form-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Admin email" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :password, "管理者パスワード", class: "form-label" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Admin password" %>
-        </div>
-        <div class="mb-3">
-          <%= f.submit "管理者画面へ", class: "btn btn-warning btn-block" %>
-        </div>
-      <% end %>
+          <div class="mb-3">
+            <%= f.label :email, "管理者アドレス", class: "form-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Admin email" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, "管理者パスワード", class: "form-label" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Admin password" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.submit "管理者画面へ", class: "btn btn-warning w-100" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

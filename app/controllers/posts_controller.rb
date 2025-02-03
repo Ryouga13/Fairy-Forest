@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.score = Language.get_data(post_params[:body])  #API:Language
     if @post.save
       flash[:notice] = "投稿に成功しました。"
       redirect_to post_path(@post.id)
@@ -75,7 +76,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :category, :star)
   end
 
 end

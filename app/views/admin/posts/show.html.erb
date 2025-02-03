@@ -1,28 +1,29 @@
 
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
-    <div class="col-5 mx-auto">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
       <h2 class="mb-4">投稿詳細</h2>
 
-      <h2>タイトル</h2>
-      <p><%= @post.title %></p>
-      <h2>本文</h2>
-      <p><%= @post.body %></p>
-      <h4>コメント数</h4>
-      <p><%= @post.comments.count %></p>
+      <h3 class="fw-bold">タイトル</h3>
+      <p class="mb-3"><%= @post.title %></p>
 
-      <div class="d-flex justify-content-between">
-        <%= link_to "削除", admin_post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+      <h3 class="fw-bold">本文</h3>
+      <p class="mb-3"><%= @post.body %></p>
+
+      <h4>コメント数</h4>
+      <p class="mb-4"><%= @post.comments.count %></p>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+        <%= link_to "削除", admin_post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger mb-2 mb-md-0" %>
       </div>
 
-      <div class="mt-3">
+      <div class="mt-4">
         <%= render "admin/favorites/btn", post: @post %>
       </div>
     </div>
   </div>
-  
-  <div class="comment-section">
+
+  <div class="comment-section mt-4">
     <%= render "admin/comments/index", post: @post %>
   </div>
-  
 </div>
