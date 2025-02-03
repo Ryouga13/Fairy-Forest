@@ -18,7 +18,7 @@
               <th>内容</th>
               <th>コメント数</th>
               <th>いいね数</th>
-              <th>感情分析</th>
+              <th>感情分析スコア</th>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +43,7 @@
                 
                 <td><%= render "favorites/btn", post: post %></td>
 
-                <td><span class="sentiment-score">本文の感情分析スコア<%= post.score %></span></td>
+                <td><span class="sentiment-score"><%= post.score %></span></td>
               </tr>
             <% end %>
           </tbody>
