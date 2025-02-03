@@ -1,11 +1,11 @@
 
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
-    <div class="col-5 mx-auto">
-      <h2 class="mb-4">ユーザー一覧</h2>
+    <div class="col-lg-5 col-md-8 col-sm-10 col-12 mx-auto">
+      <h2 class="mb-4 text-center">ユーザ一覧</h2>
 
-      <%= form_with url: users_path, method: :get, local: true do %>
-        <div>
+      <%= form_with url: users_path, method: :get, local: true, class: "mb-3" do %>
+        <div class="input-group">
           <%= label_tag :word, "検索ワード" %>
           <%= params[:word] %>
         </div>
@@ -15,7 +15,7 @@
         <% if @users.present? %>
           <% @users.each do |user| %>
             <div class="list-group-item">
-              <h4 class="mb-1">名前</h4>
+              <p class="mb-1">ユーザ名前</p>
               <%= link_to user.name, user_path(user), class: "text-primary" %>
             </div>
           <% end %>

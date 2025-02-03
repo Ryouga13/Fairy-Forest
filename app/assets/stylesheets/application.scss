@@ -91,10 +91,12 @@ tbody td {
 
 
 /* posts/index のみ 画像サイズ 50px */
-.posts-index .profile-image {
+.posts-index .profile-image, .posts-search .profile-image {
   max-width: 50px;
   height: auto;
 }
+
+
 
 /* それ以外のページでは 150px */
 .profile-image {
