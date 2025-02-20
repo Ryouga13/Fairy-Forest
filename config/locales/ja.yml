@@ -87,6 +87,11 @@ ja:
       day: 日
       month: 月
       year: 年
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
   errors:
     format: "%{attribute}%{message}"
     messages:
