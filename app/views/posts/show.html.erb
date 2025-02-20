@@ -47,6 +47,7 @@
       <!-- いいねボタン -->
       <div class="mt-3">
         <%= render "favorites/btn", post: @post %>
+        <p>投稿日時: <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
       </div>
     </div>
   </div>
