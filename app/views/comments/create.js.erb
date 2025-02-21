@@ -1,5 +1,14 @@
 
-// コメント一覧を更新
-$("#comments-index").html("<%= j render 'comments/index', post: @post %>");
-// フォームをリセット
-$("#new_comment_form")[0].reset();
+<% if @comment.errors.any? %>
+  // エラーメッセージを表示
+  $("#comment-error").text("<%= j @comment.errors.full_messages.join(', ') %>").show();
+<% else %>
+  // コメント一覧を更新
+  $("#comments-index").html("<%= j render 'comments/index', post: @post %>");
+
+  // フォームをリセット
+  $("#new_comment_form")[0].reset();
+
+  // エラーメッセージを非表示にする
+  $("#comment-error").hide();
+<% end %>

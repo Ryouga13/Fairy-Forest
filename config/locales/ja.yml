@@ -8,7 +8,7 @@ ja:
   activerecord:
     errors:
       messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        record_invalid: 'バリデーションに失敗しました: %{model} %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
@@ -87,6 +87,16 @@ ja:
       day: 日
       month: 月
       year: 年
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+    models:
+      comment: "コメント"
+    attributes:
+      comment:
+        comment: "コメント内容"
   errors:
     format: "%{attribute}%{message}"
     messages:
