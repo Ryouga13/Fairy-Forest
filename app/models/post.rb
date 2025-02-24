@@ -23,7 +23,8 @@ class Post < ApplicationRecord
 
 # タグ処理
   def save_tag(sent_tags)
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    sent_tags = (sent_tags || []).map(&:strip)
+    current_tags = self.tags.pluck(:name) || []
     old_tags = current_tags - sent_tags
     new_tags = sent_tags - current_tags
     old_tags.each do |old|
