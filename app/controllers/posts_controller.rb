@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.score = Language.get_data(post_params[:body])  #API:Language
     # タグの処理
-    tag_list = params[:post][:tag_list].split(',').map(&:strip) if params[:post][:tag_list].present?
+    tag_list = params[:post][:tag_list].present? ? params[:post][:tag_list].split(',').map(&:strip) : []
     if @post.save
       @post.save_tag(tag_list)
       flash[:notice] = "投稿に成功しました。"
