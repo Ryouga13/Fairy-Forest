@@ -18,11 +18,10 @@ class Post < ApplicationRecord
 
   # 検索処理
   def self.looks(word)
-    where("title LIKE ? OR content LIKE ?", "%#{word}%", "%#{word}%")
+    where("title LIKE ? OR body LIKE ?", "%#{word}%", "%#{word}%")
   end
 
 # タグ処理
-  attr_accessor :tag_list
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
